@@ -1,27 +1,32 @@
-h3{
-    color:rgb(7, 30, 233);
+h3 {
+    color: rgb(7, 30, 233);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-p,li{
-    font: 15px italic,sans-serif;
+p, li {
+    font: 15px italic, sans-serif;
 }
 
-span{
+span {
     font-weight: bolder;
 }
 
-#expertise:hover
-{
-    color:coral;
+#expertise:hover {
+    color: coral;
 }
 
 body {
-    background-color:rgb(230, 230, 230);
+    background-color: rgb(230, 230, 230);
     background-image: url("background.PNG"), url("background2.png");
     background-position: right top;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-top: 50px; 
+    margin-left: 20px; 
 }
+
 th:hover, td:hover {
     color: purple;
 }
@@ -36,14 +41,28 @@ footer {
 }
 
 @media (max-width: 768px) {
-    button.dark-mode-btn {
-        margin-bottom: 10px; 
+    body {
+        align-items: flex-start; /* כל התוכן בצד שמאל */
     }
+
+    button.dark-mode-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px; /* כפתור בצמוד לימין */
+        margin-top: 0; /* הכפתור בצד ימין למעלה */
+    }
+
+    .centered-info {
+        text-align: center;
+        width: 100%;
+        margin-top: 50px;
+    }
+
     footer {
         position: static;
         height: auto;
         padding: 10px;
-        background-color: #f5f5f5;
+        background-color: #6c98d6;
         text-align: center;
         font-size: 14px;
     }
@@ -61,7 +80,8 @@ footer {
 }
 
 .years {
-    float: right;
+    position: absolute; /* ממקם את השנים באופן מוחלט */
+    right: 0; /* צמוד לימין */
     font-weight: bold;
     margin-left: 10px;
 }
@@ -75,12 +95,11 @@ footer {
 body.dark-mode {
     background-color: #121212;
     color: rgb(255, 255, 255);
-    
 }
 
 button.dark-mode-btn {
-    position: absolute;
-    top: 20px;
+    position: absolute; 
+    top: 20px; 
     right: 20px;
     background-color: #fff;
     color: #000;
@@ -95,12 +114,8 @@ button.dark-mode-btn:hover {
     background-color: #f0f0f0;
 }
 
-footer.dark-mode {
-    background-color: #2e2e2e;
-    color: white;
-}
 body.dark-mode h3 {
-    color: rgb(137, 216, 243); 
+    color: rgb(137, 216, 243);
 }
 
 a {
