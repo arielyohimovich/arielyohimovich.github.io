@@ -36,6 +36,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+    button.dark-mode-btn {
+        margin-bottom: 10px; 
+    }
     footer {
         position: static;
         height: auto;
