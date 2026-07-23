@@ -1,112 +1,99 @@
-// --- Theme Toggle ---
-const themeToggleBtn = document.getElementById('themeToggleBtn');
-const themeIcon = document.getElementById('themeIcon');
-const themeText = document.getElementById('themeText');
-const htmlElement = document.documentElement;
-
-const savedTheme = localStorage.getItem('theme') || 'dark';
-setTheme(savedTheme);
-
-themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-});
-
-function setTheme(theme) {
-    htmlElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    if (theme === 'dark') {
-        themeIcon.className = 'fas fa-sun';
-        themeText.textContent = 'Light';
-    } else {
-        themeIcon.className = 'fas fa-moon';
-        themeText.textContent = 'Dark';
-    }
-}
-
-// --- Interactive Rainbow Particle Trail Effect ---
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('fluid-canvas');
 const ctx = canvas.getContext('2d');
 
-let particlesArray = [];
+let width, height;
+let particles = [];
+let mouse = { px: -1000, py: -1000 };
 let hue = 0;
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 }
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-const mouse = {
-    x: undefined,
-    y: undefined,
-};
-
-window.addEventListener('mousemove', (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
-    for (let i = 0; i < 4; i++) {
-        particlesArray.push(new Particle());
-    }
-});
+window.addEventListener('resize', resize);
+resize();
 
 class Particle {
-    constructor() {
-        this.x = mouse.x;
-        this.y = mouse.y;
-        this.size = Math.random() * 7 + 2;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
-        this.color = 'hsl(' + hue + ', 100%, 60%)';
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.15;
-    }
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
+  constructor(x, y, vx, vy) {
+    this.x = x;
+    this.y = y;
+    this.vx = vx * 0.8 + (Math.random() - 0.5) * 4;
+    this.vy = vy * 0.8 + (Math.random() - 0.5) * 4;
+    this.radius = Math.random() * 80 + 40;
+    this.color = `hsl(${hue}, 100%, 65%)`;
+    this.alpha = 0.9;
+    this.decay = Math.random() * 0.012 + 0.008;
+    this.friction = 0.96;
+  }
+
+  update() {
+    this.vx *= this.friction;
+    this.vy *= this.friction;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.alpha -= this.decay;
+    this.radius += 1.2;
+  }
+
+  draw() {
+    if (this.alpha <= 0) return;
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = Math.max(0, this.alpha);
+    
+    const grad = ctx.createRadialGradient(
+      this.x, this.y, 0,
+      this.x, this.y, this.radius
+    );
+    grad.addColorStop(0, this.color);
+    grad.addColorStop(0.5, this.color);
+    grad.addColorStop(1, 'transparent');
+
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
 }
 
-function handleParticles() {
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-        
-        // Draw connecting constellation lines between nearby particles
-        for (let j = i; j < particlesArray.length; j++) {
-            const dx = particlesArray[i].x - particlesArray[j].x;
-            const dy = particlesArray[i].y - particlesArray[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 50) {
-                ctx.beginPath();
-                ctx.strokeStyle = particlesArray[i].color;
-                ctx.lineWidth = 0.3;
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                ctx.stroke();
-            }
-        }
+function handlePointerMove(x, y) {
+  const dx = x - mouse.px;
+  const dy = y - mouse.py;
+  const dist = Math.hypot(dx, dy);
 
-        if (particlesArray[i].size <= 0.2) {
-            particlesArray.splice(i, 1);
-            i--;
-        }
+  if (dist > 2) {
+    const count = Math.min(Math.floor(dist / 3) + 2, 8);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle(x, y, dx * 0.3, dy * 0.3));
     }
+    hue = (hue + 2) % 360;
+  }
+
+  mouse.px = x;
+  mouse.py = y;
 }
 
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleParticles();
-    hue += 2; // Smoothly cycle rainbow colors
-    requestAnimationFrame(animate);
+window.addEventListener('mousemove', (e) => handlePointerMove(e.clientX, e.clientY));
+window.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 0) {
+    handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+  }
+});
+
+function render() {
+  ctx.fillStyle = 'rgba(8, 7, 12, 0.15)';
+  ctx.fillRect(0, 0, width, height);
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].alpha <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(render);
 }
 
-animate();
+render();
