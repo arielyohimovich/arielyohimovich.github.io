@@ -7,15 +7,15 @@
 
 body, html {
   width: 100%;
-  min-height: 100dvh; /* מותאם דינמית לגובה המסך בסלולר */
+  min-height: 100dvh; /* גובה דינמי מותאם לטלפונים */
   background-color: #08070c;
-  overflow-x: hidden; /* מונע גלילה אופקית בלבד */
-  overflow-y: auto;   /* מאפשר גלילה אנכית אם התוכן חורג במסכים קטנים מאוד */
+  overflow-x: hidden; /* מונע גלילה אופקית */
+  overflow-y: auto;   /* מאפשר גלילה אנכית למטה במידת הצורך */
 }
 
 /* Fluid canvas background */
 #fluid-canvas {
-  position: fixed; /* קבועה ברקע גם בזמן גלילה */
+  position: fixed; /* קבוע ברקע גם כשגוללים */
   top: 0;
   left: 0;
   width: 100%;
@@ -36,10 +36,10 @@ body, html {
   min-height: 100dvh;
   text-align: center;
   color: #ffffff;
-  padding: 30px 20px;
-  /* תמיכה במגרעות ואזורים מוגנים של אייפון */
-  padding-top: max(30px, env(safe-area-inset-top));
-  padding-bottom: max(30px, env(safe-area-inset-bottom));
+  padding: 40px 20px;
+  /* תמיכה במגרעות ואזורים מוגנים ב-iOS/Android */
+  padding-top: max(40px, env(safe-area-inset-top));
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
   padding-left: max(20px, env(safe-area-inset-left));
   padding-right: max(20px, env(safe-area-inset-right));
   pointer-events: none;
@@ -55,8 +55,8 @@ body, html {
 
 /* Avatar styling */
 .avatar {
-  width: 135px;
-  height: 135px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.12);
@@ -119,7 +119,7 @@ body, html {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 30px;
-  padding: 6px 10px 6px 18px;
+  padding: 8px 12px 8px 20px;
   width: 100%;
   max-width: 440px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
@@ -131,7 +131,7 @@ body, html {
   background: transparent;
   outline: none;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #ffffff;
 }
 
@@ -142,8 +142,8 @@ body, html {
 .input-box button {
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   color: white;
   display: flex;
@@ -160,14 +160,14 @@ body, html {
   transform: scale(1.08);
 }
 
-/* Glassmorphism navigation cards */
+/* Glassmorphism navigation cards - במסך רגיל */
 .nav-cards {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .card {
@@ -175,17 +175,17 @@ body, html {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 10px 16px;
-  border-radius: 16px;
+  padding: 12px 20px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  flex: 1 1 calc(50% - 10px); /* מציג 2 בטור במובייל רגיל */
-  max-width: 110px;          /* שומר על פרופורציה נקייה */
+  justify-content: center;
+  gap: 6px;
+  min-width: 110px;
   text-decoration: none;
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -198,28 +198,28 @@ body, html {
 }
 
 .card-icon {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-/* ===== התאמה למסכים קטנים ומובייל (כמו אייפון 15 פרו) ===== */
-@media (max-width: 480px) {
-  .avatar {
-    width: 105px;
-    height: 105px;
+/* ===== התאמה מיוחדת למסכי טלפון (Mobile Layout) ===== */
+@media (max-width: 600px) {
+  .container {
+    justify-content: flex-start; /* מאפשר פריסה זורמת מלמעלה למטה */
+    padding-top: max(30px, env(safe-area-inset-top));
   }
 
-  .greeting {
-    font-size: 1rem;
+  .avatar {
+    width: 110px;
+    height: 110px;
   }
 
   .title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     line-height: 1.35;
-    margin-bottom: 10px;
   }
 
   .subtitle {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     margin-bottom: 20px;
   }
 
@@ -227,39 +227,26 @@ body, html {
     margin-bottom: 20px;
   }
 
+  /* הופך את כפתורי הניווט לטור אנכי ארוך ונוח לנגיעה */
   .nav-cards {
-    gap: 8px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
   }
 
   .card {
-    padding: 10px 12px;
-    min-width: 80px;
-    font-size: 0.78rem;
+    width: 100%;           /* הכפתור מתוח לכל רוחב המסך */
+    max-width: 100%;
+    flex-direction: row;   /* האייקון והטקסט עומדים בשורה אופקית */
+    justify-content: center;
+    padding: 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    gap: 12px;
   }
-}
 
-/* התאמה למסכים נמוכים במיוחד (כשמקלדת נפתחת או במצב אופקי) */
-@media (max-height: 670px) {
-  .container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .avatar {
-    width: 85px;
-    height: 85px;
-  }
-  .avatar-wrapper {
-    margin-bottom: 10px;
-  }
-  .title {
-    font-size: 1.15rem;
-    margin-bottom: 6px;
-  }
-  .subtitle {
-    font-size: 0.82rem;
-    margin-bottom: 14px;
-  }
-  .input-box {
-    margin-bottom: 14px;
+  .card-icon {
+    font-size: 1.3rem;
   }
 }
