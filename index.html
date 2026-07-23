@@ -1,165 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ariel Yohimovich | Software Engineer & Technical Educator</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ariel Yohimovich | Software Engineer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Interactive Particle Trail Canvas -->
-    <canvas id="canvas"></canvas>
+  <canvas id="fluid-canvas"></canvas>
 
-    <div class="app-container">
-        <!-- Theme Toggle Button -->
-        <button class="theme-toggle-btn" id="themeToggleBtn">
-            <i class="fas fa-sun" id="themeIcon"></i>
-            <span id="themeText">Light</span>
-        </button>
+  <div class="container">
+    <div class="avatar-wrapper">
+      <div class="avatar interactive">
+        <img src="me.png" alt="Ariel Yohimovich">
+      </div>
+    </div>
+    
+    <div class="greeting">Hey, I'm Ariel Yohimovich 👋</div>
+    <h1 class="title">Software Engineer | Full-Stack Curriculum Author | Lecturer & Project Mentor</h1>
+    <p class="subtitle">5+ Years Building Web/Mobile Apps, Teaching Tech & Exploring AI/ML</p>
 
-        <!-- Sidebar / Profile -->
-        <aside class="sidebar">
-            <div class="profile">
-                <h1>Ariel Yohimovich</h1>
-                <h2>Software Engineer & Technical Educator</h2>
-            </div>
-            
-            <p class="summary">
-                Full-stack engineer with 5+ years across product development and technical education[cite: 2]. Built and taught full-stack & AI curricula to hundreds of students[cite: 2].
-            </p>
-
-            <div class="contact-links">
-                <a href="mailto:ariel93yohimovich@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
-                <a href="tel:0546544308" class="contact-btn"><i class="fas fa-phone"></i> Call</a>
-                <a href="https://linkedin.com" target="_blank" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/arielyohimovich" target="_blank" class="contact-btn"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-        </aside>
-
-        <!-- Main Dashboard Layout (Fits Screen) -->
-        <main class="dashboard-grid">
-            
-            <!-- Experience -->
-            <section class="card exp-card">
-                <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                <div class="scrollable-content">
-                    <div class="item">
-                        <div class="item-head">
-                            <span class="role">Software Engineer & Lecturer</span>
-                            <span class="date">2025 - Present</span>
-                        </div>
-                        <div class="company">Leaders App Technologies</div>
-                        <ul>
-                            <li>Author & maintain full-stack curriculum (TS, React, Node, Docker, K8s, AWS, CI/CD)[cite: 2].</li>
-                            <li>1:1 project mentorship, code review & deployment guidance[cite: 2].</li>
-                            <li>Develop and teach AI/ML, Prompt Engineering & Token Optimization courses[cite: 2].</li>
-                        </ul>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-head">
-                            <span class="role">Full Stack Developer (Internship)</span>
-                            <span class="date">2024 - 2025</span>
-                        </div>
-                        <div class="company">LS Technologies</div>
-                        <ul>
-                            <li>Maintained production mobile (React Native) & backend (Node/Express/MongoDB) apps[cite: 2].</li>
-                            <li>Implemented JWT Auth, refactored legacy code, and managed App/Play Store releases[cite: 2].</li>
-                        </ul>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-head">
-                            <span class="role">Lecturer & Project Mentor</span>
-                            <span class="date">2021 - 2024</span>
-                        </div>
-                        <div class="company">Leaders App Technologies (Mamram Program)</div>
-                        <ul>
-                            <li>Taught programming to teenagers, preparing them for elite Mamram military unit[cite: 2].</li>
-                            <li>Covered JS, Java, Python, C, C#, Node.js, Express, and HTML[cite: 2].</li>
-                        </ul>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-head">
-                            <span class="role">Software Developer (Student)</span>
-                            <span class="date">2018 - 2019</span>
-                        </div>
-                        <div class="company">FXEmpire</div>
-                        <ul>
-                            <li>Wrote thousands of E2E automated UI tests (Puppeteer/Jest) integrated with Jenkins CI[cite: 2].</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section class="card skills-card">
-                <h3><i class="fas fa-tools"></i> Technical Skills</h3>
-                <div class="skills-grid">
-                    <div class="skill-cat">
-                        <h4>Frontend & Languages</h4>
-                        <div class="tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">React</span>
-                            <span class="tag">React Native</span>
-                            <span class="tag">HTML5 / CSS3</span>
-                        </div>
-                    </div>
-                    <div class="skill-cat">
-                        <h4>Backend & DB</h4>
-                        <div class="tags">
-                            <span class="tag">Node.js</span>
-                            <span class="tag">Express</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">JWT</span>
-                        </div>
-                    </div>
-                    <div class="skill-cat">
-                        <h4>DevOps & Tools</h4>
-                        <div class="tags">
-                            <span class="tag">Docker</span>
-                            <span class="tag">Kubernetes</span>
-                            <span class="tag">AWS (EC2)</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">Jenkins</span>
-                        </div>
-                    </div>
-                    <div class="skill-cat">
-                        <h4>AI & Automation</h4>
-                        <div class="tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Prompt Eng.</span>
-                            <span class="tag">Claude</span>
-                            <span class="tag">Copilot</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education & Info -->
-            <section class="card edu-card">
-                <h3><i class="fas fa-graduation-cap"></i> Education & Service</h3>
-                <div class="edu-item">
-                    <div class="role">B.Sc. Software Engineering</div>
-                    <div class="company">SCE – Sami Shamoon College of Engineering[cite: 2]</div>
-                </div>
-                <div class="edu-item">
-                    <div class="role">Full Stack Web Development</div>
-                    <div class="company">SVCollege[cite: 2]</div>
-                </div>
-                <div class="edu-item">
-                    <div class="role">Technician</div>
-                    <div class="company">Israeli Air Force (Military Service)[cite: 2]</div>
-                </div>
-            </section>
-
-        </main>
+    <div class="input-box interactive">
+      <input type="text" placeholder="Ask me about my stack, projects or experience..." />
+      <button>&#10140;</button>
     </div>
 
-    <script src="script.js"></script>
+    <div class="nav-cards">
+      <!-- Portfolio -->
+      <a href="#portfolio" class="card interactive">
+        <span class="card-icon">🚀</span><span>Portfolio</span>
+      </a>
+
+      <!-- Resume / CV -->
+      <a href="Ariel_Yohimovich_CV.pdf" target="_blank" download class="card interactive">
+        <span class="card-icon">📄</span><span>Resume / CV</span>
+      </a>
+      
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/ariel-yohimovich/" target="_blank" class="card interactive">
+        <span class="card-icon">💼</span><span>LinkedIn</span>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/arielyohimovich" target="_blank" class="card interactive">
+        <span class="card-icon">🐙</span><span>GitHub</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
