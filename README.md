@@ -4,15 +4,16 @@ Welcome to the repository of my personal portfolio website! Designed with a dark
 
 ![Portfolio Preview](me.png)
 
+
 ---
 
 ## 👋 About Me
 
 I am a **Software Engineer**, **Full-Stack Curriculum Author**, and **Lecturer & Project Mentor** with over 5 years of experience spanning product development and technical education. 
 
-* **Full-Stack Engineering:** Experienced in shipping production mobile and web apps end-to-end (React, React Native, Node.js, Express, MongoDB, TypeScript, Docker, Kubernetes, CI/CD)[cite: 8].
-* **Education & Mentorship:** Built and taught a modern full-stack curriculum to hundreds of students, guiding many into industry roles and elite tech military units (Mamram)[cite: 8].
-* **AI/ML:** Self-taught in machine learning fundamentals, token optimization, prompt engineering, and integrating daily AI tools into production and teaching workflows[cite: 8].
+* **Full-Stack Engineering:** Experienced in shipping production mobile and web apps end-to-end (React, React Native, Node.js, Express, MongoDB, TypeScript, Docker, Kubernetes, CI/CD).
+* **Education & Mentorship:** Built and taught a modern full-stack curriculum to hundreds of students, guiding many into industry roles and elite tech military units (Mamram).
+* **AI/ML:** Self-taught in machine learning fundamentals, token optimization, prompt engineering, and integrating daily AI tools into production and teaching workflows.
 
 ---
 
