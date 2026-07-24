@@ -16,18 +16,22 @@ I am a **Software Engineer**, **Full-Stack Curriculum Author**, and **Lecturer &
 
 ---
 
+
 ## 🛠️ Tech Stack & Technologies Used
 
 ### Website Tech Stack
+
 * **HTML5 & CSS3:** Responsive layout, Glassmorphism design, custom animations.
 * **JavaScript (ES6+) & HTML5 Canvas:** Interactive WebGL-inspired particle/fluid physics simulation reacting to user cursor and touch events.
 
 ### Primary Engineering Stack (CV Highlights)
-* **Languages:** JavaScript, TypeScript, Python, C#, C, Java[cite: 8].
-* **Frontend:** React, React Native, HTML5, CSS3, SCSS[cite: 8].
-* **Backend:** Node.js, Express, MongoDB, Authentication & Authorization (JWT)[cite: 8].
-* **DevOps & Tools:** Docker, Kubernetes, AWS (EC2), GitHub Actions, Jenkins, CI/CD pipelines, Postman, Puppeteer[cite: 8].
-* **AI Tools & ML:** Claude, GitHub Copilot, Prompt Engineering, Token Optimization[cite: 8].
+
+* **Languages:** JavaScript, TypeScript, Python, C#, C, Java.
+* **Frontend:** React, React Native, HTML5, CSS3, SCSS.
+* **Backend:** Node.js, Express, MongoDB, Authentication & Authorization (JWT).
+* **DevOps & Tools:** Docker, Kubernetes, AWS (EC2), GitHub Actions, Jenkins, CI/CD pipelines, Postman, Puppeteer.
+* **AI Tools & ML:** Claude, GitHub Copilot, Prompt Engineering, Token Optimization.
+
 
 ---
 
