@@ -35,9 +35,13 @@ I am a **Software Engineer**, **Full-Stack Curriculum Author**, and **Lecturer &
 
 ```text
 .
-├── index.html              # Main HTML markup
-├── style.css               # Modern dark-mode & glassmorphism styling
-├── script.js               # Interactive canvas fluid animation logic
+
+├── index.html              # Home page markup
+├── style.css               # Home page styling (dark-mode & glassmorphism)
+├── script.js               # Home page interactive canvas fluid animation logic
+├── portfolio.html          # Portfolio / projects showcase page markup
+├── portfolio.css           # Portfolio page styling
+├── portfolio.js            # Portfolio page interactive canvas fluid animation logic
 ├── me.png                  # Profile picture
 ├── Ariel_Yohimovich_CV.pdf # Resume document
 └── README.md               # Repository documentation
