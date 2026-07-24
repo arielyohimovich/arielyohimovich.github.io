@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ariel Yohimovich | Software Engineer</title>
+
+  <meta name="description" content="Ariel Yohimovich — Software Engineer, Full-Stack Curriculum Author, Lecturer & Project Mentor. 5+ years building web/mobile apps, teaching tech, and exploring AI/ML.">
+  <meta property="og:title" content="Ariel Yohimovich | Software Engineer">
+  <meta property="og:description" content="5+ Years Building Web/Mobile Apps, Teaching Tech & Exploring AI/ML">
+  <meta property="og:image" content="me.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,40 +21,38 @@
   <div class="container">
     <div class="avatar-wrapper">
       <div class="avatar interactive">
-        <img src="me.png" alt="Ariel Yohimovich">
+        <img src="me.png" alt="Ariel Yohimovich" onerror="this.classList.add('broken')">
+        <div class="avatar-fallback" aria-hidden="true">AY</div>
       </div>
     </div>
-    
+
     <div class="greeting">Hey, I'm Ariel Yohimovich 👋</div>
-    <h1 class="title">Software Engineer | Full-Stack Curriculum Author | Lecturer & Project Mentor</h1>
-    <p class="subtitle">5+ Years Building Web/Mobile Apps, Teaching Tech & Exploring AI/ML</p>
+    <h1 class="title">Software Engineer | Full-Stack Curriculum Author | Lecturer &amp; Project Mentor</h1>
+    <p class="subtitle">5+ Years Building Web/Mobile Apps, Teaching Tech &amp; Exploring AI/ML</p>
 
-    <div class="input-box interactive">
-      <input type="text" placeholder="Ask me about my stack, projects or experience..." />
-      <button>&#10140;</button>
-    </div>
+    <form class="input-box interactive" role="search">
+      <label for="ask-input" class="visually-hidden">Ask me about my stack, projects or experience</label>
+      <input id="ask-input" type="text" placeholder="Ask me about my stack, projects or experience..." autocomplete="off" />
+      <button type="submit" aria-label="Submit question">&#10140;</button>
+    </form>
 
-    <div class="nav-cards">
-      <!-- Portfolio -->
-      <a href="#portfolio" class="card interactive">
-        <span class="card-icon">🚀</span><span>Portfolio</span>
+    <nav class="nav-cards" aria-label="Main navigation">
+      <a href="portfolio.html" class="card interactive">
+        <span class="card-icon" aria-hidden="true">🚀</span><span>Portfolio</span>
       </a>
 
-      <!-- Resume / CV -->
-      <a href="Ariel_Yohimovich_CV.pdf" target="_blank" download class="card interactive">
-        <span class="card-icon">📄</span><span>Resume / CV</span>
-      </a>
-      
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/ariel-yohimovich/" target="_blank" class="card interactive">
-        <span class="card-icon">💼</span><span>LinkedIn</span>
+      <a href="Ariel_Yohimovich_CV.pdf" target="_blank" rel="noopener noreferrer" download class="card interactive">
+        <span class="card-icon" aria-hidden="true">📄</span><span>Resume / CV</span>
       </a>
 
-      <!-- GitHub -->
-      <a href="https://github.com/arielyohimovich" target="_blank" class="card interactive">
-        <span class="card-icon">🐙</span><span>GitHub</span>
+      <a href="https://www.linkedin.com/in/ariel-yohimovich/" target="_blank" rel="noopener noreferrer" class="card interactive">
+        <span class="card-icon" aria-hidden="true">💼</span><span>LinkedIn</span>
       </a>
-    </div>
+
+      <a href="https://github.com/arielyohimovich" target="_blank" rel="noopener noreferrer" class="card interactive">
+        <span class="card-icon" aria-hidden="true">🐙</span><span>GitHub</span>
+      </a>
+    </nav>
   </div>
 
   <script src="script.js"></script>
