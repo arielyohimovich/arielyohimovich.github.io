@@ -1,10 +1,13 @@
 const canvas = document.getElementById('fluid-canvas');
 const ctx = canvas.getContext('2d');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let width, height;
 let particles = [];
 let mouse = { px: -1000, py: -1000 };
 let hue = 0;
+let animationId = null;
+const MAX_PARTICLES = 300;
 
 function resize() {
   width = canvas.width = window.innerWidth;
@@ -40,7 +43,7 @@ class Particle {
     ctx.save();
     ctx.globalCompositeOperation = 'screen';
     ctx.globalAlpha = Math.max(0, this.alpha);
-    
+
     const grad = ctx.createRadialGradient(
       this.x, this.y, 0,
       this.x, this.y, this.radius
@@ -65,6 +68,7 @@ function handlePointerMove(x, y) {
   if (dist > 2) {
     const count = Math.min(Math.floor(dist / 3) + 2, 8);
     for (let i = 0; i < count; i++) {
+      if (particles.length >= MAX_PARTICLES) particles.shift();
       particles.push(new Particle(x, y, dx * 0.3, dy * 0.3));
     }
     hue = (hue + 2) % 360;
@@ -74,12 +78,14 @@ function handlePointerMove(x, y) {
   mouse.py = y;
 }
 
-window.addEventListener('mousemove', (e) => handlePointerMove(e.clientX, e.clientY));
-window.addEventListener('touchmove', (e) => {
-  if (e.touches.length > 0) {
-    handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
-  }
-});
+if (!prefersReducedMotion) {
+  window.addEventListener('mousemove', (e) => handlePointerMove(e.clientX, e.clientY));
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  });
+}
 
 function render() {
   ctx.fillStyle = 'rgba(8, 7, 12, 0.15)';
@@ -93,7 +99,33 @@ function render() {
     }
   }
 
-  requestAnimationFrame(render);
+  animationId = requestAnimationFrame(render);
 }
 
-render();
+function startRender() {
+  if (animationId === null) {
+    animationId = requestAnimationFrame(render);
+  }
+}
+
+function stopRender() {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopRender();
+  } else {
+    startRender();
+  }
+});
+
+if (prefersReducedMotion) {
+  ctx.fillStyle = 'rgba(8, 7, 12, 1)';
+  ctx.fillRect(0, 0, width, height);
+} else {
+  startRender();
+}
