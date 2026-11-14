@@ -106,3 +106,43 @@ if (prefersReducedMotion) {
 } else {
   startRender();
 }
+
+
+
+const legitdexVideo = document.getElementById("legitdexVideo");
+const legitdexCover = document.getElementById("legitdexCover");
+const legitdexVideoContainer =
+  document.getElementById("legitdexVideoContainer");
+
+function playLegitdexVideo() {
+
+  legitdexCover.style.display = "none";
+
+  legitdexVideoContainer.classList.add("active");
+
+  legitdexVideo.currentTime = 0;
+
+  legitdexVideo.play().catch(error => {
+    console.error("Could not play video:", error);
+
+    legitdexCover.style.display = "block";
+    legitdexVideoContainer.classList.remove("active");
+
+    alert("Unable to play video. Please check the MP4 file.");
+  });
+}
+
+function stopLegitdexVideo(event) {
+
+  if (event) {
+    event.stopPropagation();
+  }
+
+  legitdexVideo.pause();
+  legitdexVideo.currentTime = 0;
+
+  legitdexVideoContainer.classList.remove("active");
+
+  legitdexCover.style.display = "block";
+}
+
