@@ -33,49 +33,55 @@
 
     <div class="projects-grid">
 
-
-
 <!-- Project 1: Legitdex -->
 <article class="project-card">
 
-  <!-- Clickable Project Thumbnail -->
-  <div
-    class="project-thumb thumb-llm video-trigger"
-    onclick="openLegitdexVideo()"
-    role="button"
-    tabindex="0"
-    aria-label="Play Legitdex demo video"
-    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLegitdexVideo(); }"
-  >
-    <img
-      src="legitdex.png"
-      alt="Legitdex collector app screenshot"
-      onerror="this.classList.add('broken')"
-    >
+  <div class="project-thumb thumb-llm" id="legitdexThumbnail">
 
-    <div class="thumb-fallback" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg"
-        width="26" height="26" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="1.5"
-        stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.3-4.3"></path>
-        <path d="m8 11 2 2 4-4"></path>
-      </svg>
-      <span>Add project-legitdex.png</span>
+    <!-- Original Image -->
+    <div class="legitdex-cover" id="legitdexCover"
+         onclick="playLegitdexVideo()">
+
+      <img
+        src="legitdex.png"
+        alt="Legitdex collector app screenshot"
+      >
+
+      <!-- Play Button -->
+      <div class="legitdex-play">
+        <svg viewBox="0 0 24 24" width="32" height="32"
+             fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+
+      <span class="legitdex-watch-label">Watch Demo</span>
+
     </div>
 
-    <!-- Play Button -->
-    <div class="video-play-button">
-      <svg xmlns="http://www.w3.org/2000/svg"
-        width="30" height="30" viewBox="0 0 24 24"
-        fill="white" stroke="white" stroke-width="1"
-        stroke-linejoin="round">
-        <polygon points="7 3 21 12 7 21 7 3"></polygon>
-      </svg>
+    <!-- Video - Initially Hidden -->
+    <div class="legitdex-video-container" id="legitdexVideoContainer">
+
+      <button
+        class="legitdex-close"
+        onclick="stopLegitdexVideo(event)"
+        aria-label="Back to image"
+      >
+        &times;
+      </button>
+
+      <video
+        id="legitdexVideo"
+        controls
+        playsinline
+        preload="none"
+      >
+        <source src="legitdex.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+
     </div>
 
-    <span class="video-hint">Watch Demo</span>
   </div>
 
   <div class="project-body">
@@ -86,12 +92,13 @@
 
     <p class="project-desc">
       A social platform for trading-card collectors, starting with Pokémon TCG.
-      Snap a photo of a card and AI identifies it, scores how likely it is to be
-      authentic, and estimates its market value. You can then add it to your
-      collection or list it for sale in a community marketplace with seller ratings.
+      Snap a photo of a card and AI identifies it, scores how likely it is
+      to be authentic, and estimates its market value. You can then
+      add it to your collection or list it for sale in a community
+      marketplace with seller ratings.
 
-      I designed the full product spec and built it on Base44. It went live this
-      month and reached 65 users in its first few days.
+      I designed the full product spec and built it on Base44.
+      It went live this month and reached 65 users in its first few days.
     </p>
 
     <div class="tech-tags">
@@ -111,9 +118,10 @@
         class="action-btn primary"
       >
         <svg xmlns="http://www.w3.org/2000/svg"
-          width="14" height="14" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+             width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
           <path d="M15 3h6v6"/>
           <path d="M10 14 21 3"/>
@@ -122,37 +130,9 @@
       </a>
 
     </div>
+
   </div>
 </article>
-
-
-<!-- Video Modal -->
-<div
-  id="legitdexVideoModal"
-  class="video-modal"
-  onclick="closeLegitdexVideo(event)"
-  aria-hidden="true"
->
-  <button
-    class="video-close"
-    onclick="closeLegitdexVideo()"
-    aria-label="Close video"
-  >
-    &times;
-  </button>
-
-  <div class="video-modal-content" onclick="event.stopPropagation()">
-    <video
-      id="legitdexVideo"
-      controls
-      playsinline
-      preload="none"
-    >
-      <source src="legitdex.mp4" type="video/mp4">
-      Your browser does not support HTML video.
-    </video>
-  </div>
-</div>
 
       <!-- Project 2: Hot Potato game -->
       <article class="project-card">
