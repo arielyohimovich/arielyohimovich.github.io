@@ -173,7 +173,100 @@
         </div>
       </article>
 
+<!-- Project 3: Space Survivor -->
+<article class="project-card">
 
+  <div class="project-thumb thumb-llm" id="legitdexThumbnail">
+
+    <!-- Original Image -->
+    <div class="legitdex-cover" id="legitdexCover"
+         onclick="playLegitdexVideo()">
+
+      <img
+        src="space-survivor.png"
+        alt="space survivor game screenshat"
+      >
+
+      <!-- Play Button -->
+      <div class="legitdex-play">
+        <svg viewBox="0 0 24 24" width="32" height="32"
+             fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+
+      <span class="legitdex-watch-label">Watch Demo</span>
+
+    </div>
+
+    <!-- Video - Initially Hidden -->
+    <div class="legitdex-video-container" id="legitdexVideoContainer">
+
+      <button
+        class="legitdex-close"
+        onclick="stopLegitdexVideo(event)"
+        aria-label="Back to image"
+      >
+        &times;
+      </button>
+
+      <video
+        id="legitdexVideo"
+        controls
+        playsinline
+        preload="none"
+      >
+        <source src="/space_survivor_promo.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+
+    </div>
+
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-title">
+      Space Survivor – game
+    </div>
+
+    <p class="project-desc">
+     Survive as long as you can! Monsters double every 10 seconds and a new boss arrives every 30 seconds - each one stronger and in a new color.
+
+     Monsters may drop: Health, Speed (your suit turns red!), Weapon upgrades (Blue > Green > Yellow > Red lasers) and a Shield.
+
+      Controls: WASD / arrows / hold mouse. Lasers fire automatically. P = pause.
+    </p>
+
+    <div class="tech-tags">
+      <span class="tech-tag">python</span>
+      <span class="tech-tag">pygame</span>
+    </div>
+
+    <div class="project-actions">
+
+      <a
+        href="https:/https://ariel93.itch.io/space-survivor"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="action-btn primary"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <path d="M15 3h6v6"/>
+          <path d="M10 14 21 3"/>
+        </svg>
+        Live App
+      </a>
+
+    </div>
+
+  </div>
+</article>
       
 
     </div>
