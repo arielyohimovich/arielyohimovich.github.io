@@ -146,3 +146,42 @@ function stopLegitdexVideo(event) {
   legitdexCover.style.display = "block";
 }
 
+
+
+const legitdexVideo = document.getElementById("legitdexVideo");
+const legitdexCover = document.getElementById("legitdexCover");
+const legitdexVideoContainer =
+  document.getElementById("spaceSurvivorVideoContainer");
+
+function playspaceSurvivorVideo() {
+
+  spaceSurvivorCover.style.display = "none";
+
+  spaceSurvivorVideoContainer.classList.add("active");
+
+  spaceSurvivorVideo.currentTime = 0;
+
+ spaceSurvivorVideo.play().catch(error => {
+    console.error("Could not play video:", error);
+
+    spaceSurvivorCover.style.display = "block";
+    spaceSurvivorVideoContainer.classList.remove("active");
+
+    alert("Unable to play video. Please check the MP4 file.");
+  });
+}
+
+function stopspaceSurvivorVideo(event) {
+
+  if (event) {
+    event.stopPropagation();
+  }
+
+  spaceSurvivorVideo.pause();
+  spaceSurvivorVideo.currentTime = 0;
+
+  spaceSurvivorVideoContainer.classList.remove("active");
+
+  spaceSurvivorCover.style.display = "block";
+}
+
