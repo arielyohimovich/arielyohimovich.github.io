@@ -148,9 +148,9 @@ function stopLegitdexVideo(event) {
 
 
 
-const legitdexVideo = document.getElementById("legitdexVideo");
-const legitdexCover = document.getElementById("legitdexCover");
-const legitdexVideoContainer =
+const spaceSurvivorVideo = document.getElementById("spaceSurvivorVideo");
+const spaceSurvivorCover = document.getElementById("spaceSurvivorCover");
+const spaceSurvivorVideoContainer =
   document.getElementById("spaceSurvivorVideoContainer");
 
 function playspaceSurvivorVideo() {
